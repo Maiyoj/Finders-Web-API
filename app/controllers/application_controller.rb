@@ -13,5 +13,21 @@ class ApplicationController < Sinatra::Base
         )
         game.to_json
     end
+
+    delete '/games/:id' do 
+        game = Game.find(params[:id])
+        game.destroy
+        game.to_json
+      end
+  
+      patch '/games/:id' do 
+        game = Game.find(params[:id])
+        game.update(
+            name: params[:name],
+            description: params[:description]
+        )
+        game.to_json
+      end
+  
       
 end
