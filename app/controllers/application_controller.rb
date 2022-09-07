@@ -32,18 +32,22 @@ class ApplicationController < Sinatra::Base
 
     #   Review Routes
     get '/reviews' do 
-        review = Review.all
-        review.to_json
-      end
-
-      post '/reviews' do
-        review = Review.create(
-          body: params[:body],
-          game_id: params[:game_id]
-        )
-        review.to_json
+      reviews = Review.all
+      reviews.to_json
     end
 
+    post '/reviews' do
+      review = Review.create(
+        title: params[:title],
+        body: params[:body],
+        game_id: params[:game_id],
+        user_id: params[:user_id]
+
+      )
+      review.to_json
+  end
+
+  
     delete '/reviews/:id' do 
         review = Review.find(params[:id])
         review.destroy
@@ -54,7 +58,6 @@ class ApplicationController < Sinatra::Base
         review = Review.find(params[:id])
         review.update(
             body: params[:body],
-            game_id: params[:game_id]
         )
         review.to_json
       end
@@ -73,6 +76,24 @@ class ApplicationController < Sinatra::Base
         )
         user.to_json
     end
+
+    # reviews section
+    get '/reviews' do 
+      reviews = Review.all
+      reviews.to_json
+    end
+
+    post '/reviews' do
+      review = Review.create(
+        title: params[:title],
+        body: params[:body],
+        game_id: params[:game_id],
+        user_id: params[:user_id]
+
+      
+      )
+      review.to_json
+  end
 
 
     

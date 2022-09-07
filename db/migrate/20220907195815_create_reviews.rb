@@ -3,8 +3,8 @@ class CreateReviews < ActiveRecord::Migration[6.1]
     create_table :reviews do |t|
       t.string :title
       t.string :body
-      t.integer :game_id
       t.integer :user_id
+      t.integer :game_id
     end
   end
 end
