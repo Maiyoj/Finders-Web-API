@@ -59,6 +59,24 @@ class ApplicationController < Sinatra::Base
         review.to_json
       end
 
+      # User section
+      get '/users' do 
+        users = User.all
+        users.to_json
+      end
+
+      post '/users' do
+        user = User.create(
+          name: params[:name],
+          email: params[:email],
+          phone: params[:phone]
+        )
+        user.to_json
+    end
+
+
+    
+
 
       
 end
