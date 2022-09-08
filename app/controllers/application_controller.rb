@@ -6,6 +6,12 @@ class ApplicationController < Sinatra::Base
         game.to_json
       end
 
+      get '/games/:id' do 
+        game = Game.find(params[:id])
+        game.to_json(include: :reviews)
+      end
+
+
       post '/games' do
         game = Game.create(
           name: params[:name],
@@ -118,7 +124,5 @@ delete '/profiles/:id' do
   profile.to_json
 end
     
-
-
       
 end
