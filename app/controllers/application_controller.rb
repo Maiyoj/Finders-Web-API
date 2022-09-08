@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
     #   Review Routes
     get '/reviews' do 
       reviews = Review.all
-      reviews.to_json(include: {game: {only: [:name], include: {users: {only: [:name]}}}})
+      reviews.to_json
     end
 
     post '/reviews' do
@@ -68,7 +68,7 @@ class ApplicationController < Sinatra::Base
         review.to_json
       end
 
-      # User section
+      # User routes
       get '/users' do 
         users = User.all
         users.to_json
@@ -83,7 +83,7 @@ class ApplicationController < Sinatra::Base
         user.to_json
     end
 
-    # reviews section
+    # reviews routes
     get '/reviews' do 
       reviews = Review.all
       reviews.to_json
@@ -103,8 +103,8 @@ class ApplicationController < Sinatra::Base
 
   #profile routes
   get '/profiles' do 
-    profiles = Profile.all
-    profiles.to_json
+    profiles = Profile.first
+    profiles.to_json(include: :user)
   end
 
   post '/profiles' do
