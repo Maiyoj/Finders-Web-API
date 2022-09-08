@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
     #   Review Routes
     get '/reviews' do 
       reviews = Review.all
-      reviews.to_json
+      reviews.to_json(include: {game: {only: [:name], include: {users: {only: [:name]}}}})
     end
 
     post '/reviews' do
@@ -95,7 +95,28 @@ class ApplicationController < Sinatra::Base
       review.to_json
   end
 
+  #profile routes
+  get '/profiles' do 
+    profiles = Profile.all
+    profiles.to_json
+  end
 
+  post '/profiles' do
+     profile = Profile.create(
+      twitter: params[:twitter],
+      twich: params[:twich],
+      bio: params[:bio],
+      user_id: params[:user_id]
+
+    )
+    profile.to_json
+end
+
+delete '/profiles/:id' do 
+  profile = Profile.find(params[:id])
+  profile.destroy
+  profile.to_json
+end
     
 
 
