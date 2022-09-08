@@ -103,7 +103,7 @@ class ApplicationController < Sinatra::Base
 
   #profile routes
   get '/profiles' do 
-    profiles = Profile.first
+    profiles = Profile.last
     profiles.to_json(include: :user)
   end
 
