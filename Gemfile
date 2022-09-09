@@ -13,6 +13,7 @@ gem "rake", "~> 13.0"
 gem "faker", "~> 2.18"
 gem "sqlite3", "~> 1.4"
 gem "require_all", "~> 3.0"
+gem "pg"
 
 
 group :development do
