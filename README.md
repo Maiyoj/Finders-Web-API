@@ -32,7 +32,7 @@
 
 
 ### Live Link
-
+https://call-of-duty-apis.herokuapp.com
 
 ### Technology  Used
 * Sinatra
