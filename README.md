@@ -15,6 +15,7 @@
  * Access to  a laptop or a phone or a desktop computer
  * Access to internet
  * have latest version of browser installed
+ * Have postman installed for testing the endpoints
  * Install Ruby
  * Install mysqLite3
  
@@ -28,6 +29,7 @@
 * open the folder in an editor of choice 
 * bundle install
 * bundle exec rake server to start the application server
+* Test the endpoints on the browser or postman
 
 
 
